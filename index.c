@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#define ROWS 10
-#define COLS 10
+#define ROWS 15
+#define COLS 15
 int new_matrix[ROWS][COLS] = {0};
 
 void isLife(int x, int y, int matrix[ROWS][COLS]) {
@@ -46,15 +48,24 @@ int main() {
     int generation = 0;
 
     while (1) {
-                printf("Generation: %d\n\n", generation);
+        printf("Generation: %d\n\n", generation);
         for (int i = 0; i < ROWS; i++) {
-        for (int j = 0; j < COLS; j++) {
-            isLife(i, j, matrix);
-        }
+            for (int j = 0; j < COLS; j++) {
+                isLife(i, j, matrix);
+            }
         }
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
-                printf("%d ", matrix[i][j]);
+                if (matrix[i][j] == 1) {
+                    printf("\033[0;33m");
+                    printf("%d ", matrix[i][j]);
+                    printf("\033[0m");    
+                }
+                else {
+                    printf("\033[0;32m");
+                    printf("%d ", matrix[i][j]);
+                    printf("\033[0m");  
+                }
             }
             printf("\n");
         }
@@ -64,8 +75,8 @@ int main() {
             }
         }
         generation++;
-        printf("\n\n");
-        sleep(1);
+        usleep(100000);
+        system("clear");
     }
     return 0;
 }
