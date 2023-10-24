@@ -1,15 +1,27 @@
-#include <stdio.h>
-#include <unistd.h>
+#include <ncurses.h>
 
 int main() {
-    int count = 0;
+    // Initialize ncurses
+    initscr();
+    start_color();
 
-    while (1) {
-        printf("Count: %d\n", count);
-        count++;
+    // Define color pairs
+    init_pair(1, COLOR_RED, COLOR_BLACK);
 
-        sleep(1);
-    }
+    // Enable color pair 1
+    attron(COLOR_PAIR(1));
+
+    // Print the red number 1
+    mvprintw(0, 0, "1");
+
+    // Refresh the screen to show the changes
+    refresh();
+
+    // Wait for user input
+    getch();
+
+    // End ncurses
+    endwin();
 
     return 0;
 }
