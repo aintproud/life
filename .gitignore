@@ -1,3 +1,4 @@
-*
-!*.c
-!.gitignore
+src/*
+!src/*.c
+build
+.vscode
