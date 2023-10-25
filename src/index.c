@@ -57,14 +57,10 @@ int main() {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
                 if (matrix[i][j] == 1) {
-                    printf("\033[0;33m");
-                    printf("%d ", matrix[i][j]);
-                    printf("\033[0m");    
+                    printf("\033[0;33m%d\033[0m ", matrix[i][j]);
                 }
                 else {
-                    printf("\033[0;32m");
-                    printf("%d ", matrix[i][j]);
-                    printf("\033[0m");  
+                    printf("\033[0;32m%d\033[0m ", matrix[i][j]);
                 }
             }
             printf("\n");
